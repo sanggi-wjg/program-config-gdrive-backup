@@ -12,21 +12,16 @@ from app.utils import load_icon, load_config
 
 def get_backup_menus(config):
     logger.debug(config)
-    items = []
+    items = list()
 
     for name in config:
-        items.append(
-            MenuItem(
-                name,
-                on_click_program_able,
-                checked = lambda item: config[name][NAME_IS_USE]
-            )
-        )
+        items.append(MenuItem(
+            name,
+            on_click_program_able,
+            checked = lambda item: config[name][NAME_IS_USE]
+        ))
 
-    program_menu = MenuItem('Backup', Menu(
-        *tuple(items)
-    ))
-    return program_menu
+    return MenuItem('Backup', Menu(*tuple(items)))
 
 
 def run_tray():
